@@ -7,7 +7,7 @@
 ## 📸 Características
 
 | Característica | Detalle |
-|---|---|
+| --- | --- |
 | **Captura en tiempo real** | Motor C++ multihilo que captura paquetes sin bloquear la interfaz |
 | **Decodificación completa** | Ethernet (MAC), IPv4 (TTL, IHL), TCP (Seq, Ack, Flags), UDP |
 | **Inspección estilo Wireshark** | Árbol de protocolos por capa OSI + visor hexadecimal |
@@ -22,7 +22,7 @@
 
 ## 🏗️ Arquitectura
 
-```
+```text
 ┌──────────────────────────────────────────────────────────────┐
 │                  Frontend (Python / PyQt6)                     │
 │  ┌──────────┐  ┌─────────────────────────────────────────┐   │
@@ -52,7 +52,7 @@
 ## 📋 Requisitos Previos
 
 | Componente | Versión mínima | Enlace |
-|---|---|---|
+| --- | --- | --- |
 | **Windows** | 10 / 11 | — |
 | **Python** | 3.10+ | [python.org](https://www.python.org/) |
 | **CMake** | 3.15+ | [cmake.org](https://cmake.org/) |
@@ -75,7 +75,7 @@ pip install PyQt6
 ```bash
 cd backend
 mkdir build && cd build
-cmake .. -G "MinGW Makefiles" -DNPCAP_SDK_DIR="C:/Npcap-SDK"
+cmake .. -G "Ninja" -DNPCAP_SDK_DIR="C:/Npcap-SDK"
 cmake --build . --config Release
 ```
 
@@ -104,18 +104,19 @@ El ejecutable estará en `frontend/dist/AnalizadorDeRedes.exe`.
 
 ## 📁 Estructura del Proyecto
 
-```
-├── backend/                    # Motor de captura (C++)
-│   ├── CMakeLists.txt          # Sistema de compilación CMake
+```text
+├── backend/                        # Motor de captura (C++)
+│   ├── CMakeLists.txt              # Sistema de compilación CMake
 │   └── src/
-│       ├── core.cpp            # Wrapper Pybind11
-│       ├── packet_capture.cpp  # Lógica de captura y decodificación
-│       ├── packet_capture.hpp  # Declaraciones de la clase
-│       └── protocol_headers.hpp # Structs de protocolos + DTO
-├── frontend/                   # Interfaz gráfica (Python)
-│   ├── main.py                 # Punto de entrada de la aplicación
-│   ├── gui.py                  # Ventana principal con 3 paneles
-│   └── sniffer.manifest        # Manifiesto UAC de Windows
+│       ├── core.cpp                # Wrapper Pybind11
+│       ├── packet_capture.cpp      # Lógica de captura y decodificación
+│       ├── packet_capture.hpp      # Declaraciones de la clase
+│       └── protocol_headers.hpp    # Structs de protocolos + DTO
+├── frontend/                       # Interfaz gráfica (Python)
+│   ├── main.py                     # Punto de entrada de la aplicación
+│   ├── gui.py                      # Ventana principal con 3 paneles
+│   ├── sniffer.manifest            # Manifiesto UAC de Windows
+│   └── AnalizadorDeRedes.spec      # Configuración de PyInstaller
 ├── .gitignore
 ├── LICENSE
 └── README.md
@@ -126,9 +127,11 @@ El ejecutable estará en `frontend/dist/AnalizadorDeRedes.exe`.
 ## 🔧 Detalles Técnicos
 
 ### Patrón Productor-Consumidor
+
 El motor C++ captura paquetes en un hilo dedicado y los almacena en un `std::vector<PacketInfo>` protegido con `std::mutex`. Python consume estos datos cada 100 ms mediante un `QTimer`, evitando bloqueos en la interfaz gráfica.
 
 ### Optimizaciones de Rendimiento
+
 - **`snprintf`** en lugar de `std::stringstream` para formatear IPs y MACs.
 - **`emplace_back(std::move())`** para evitar copias de structs.
 - **`setUpdatesEnabled(False)`** durante inserciones masivas en la tabla.

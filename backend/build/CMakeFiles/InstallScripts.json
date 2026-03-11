@@ -1,8 +1,0 @@
-{
-	"InstallScripts" : 
-	[
-		"C:/Analizador de paquetes de redes/backend/build/cmake_install.cmake",
-		"C:/Analizador de paquetes de redes/backend/build/_deps/pybind11-build/cmake_install.cmake"
-	],
-	"Parallel" : false
-}

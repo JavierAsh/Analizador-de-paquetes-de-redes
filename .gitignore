@@ -17,16 +17,12 @@ __pycache__/
 *.pyc
 *.pyo
 *.egg-info/
-dist/
-build/
-*.spec
 
 # ===========================
 # PyInstaller
 # ===========================
 frontend/build/
 frontend/dist/
-frontend/*.spec
 
 # ===========================
 # IDE y editores
@@ -38,10 +34,9 @@ frontend/*.spec
 *~
 
 # ===========================
-# Archivos temporales del proyecto
+# Configuración del agente AI
 # ===========================
-tmp_*.py
-tmp_*.txt
+.agrules
 
 # ===========================
 # Sistema operativo
