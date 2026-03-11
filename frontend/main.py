@@ -20,53 +20,17 @@ except ImportError as e:
     sys.exit(1)
 
 def main():
-    print("Iniciando Fase 2: Prueba de captura (Python Frontend)...")
-    
-    cap = sniffer_core.PacketCapture()
-    
-    interfaces = cap.get_interfaces()
-    if not interfaces:
-        print("No se encontraron interfaces de red Npcap válidas. Instalaste o corriste el script como admin?")
-        return
-    
-    print("Interfaces Npcap disponibles:")
-    for i, iface in enumerate(interfaces):
-        print(f"[{i}] {iface}")
-        
-    # Buscar una interfaz que suene a tarjeta de red física o Loopback activo
-    selected_idx = 0
-    for i, iface in enumerate(interfaces):
-        iname = iface.lower()
-        if "ethernet" in iname or "wi-fi" in iname or "realtek" in iname or "intel" in iname:
-            selected_idx = i
-            break
-        elif "loopback" in iname: # Fallback a loopback si no encuentra una física
-            selected_idx = i
-    
-    # Force selection of Realtek (index 4 in previous run) if available to guarantee physical egress traffic
-    for i, iface in enumerate(interfaces):
-        if "realtek" in iface.lower():
-            selected_idx = i
-            break
-            
-    iface_to_use = interfaces[selected_idx]
-    
-    print(f"\nIniciando captura en la interfaz seleccionada por 5 segundos: {iface_to_use}")
-    
-    cap.start_capture(iface_to_use)
-    
-    # Generar tráfico intencionalmente
+    print("Iniciando aplicación PyQt6...")
     try:
-        import urllib.request
-        print("Enviando petición HTTP para forzar tráfico...")
-        urllib.request.urlopen("http://example.com", timeout=2)
-    except Exception as e:
-        print(f"Error en petición HTTP de prueba (ignorando): {e}")
+        from PyQt6.QtWidgets import QApplication
+        from gui import SnifferApp
         
-    time.sleep(4)
-    
-    cap.stop_capture()
-    print("Prueba de Fase 2 completada.")
+        app = QApplication(sys.argv)
+        window = SnifferApp()
+        window.show()
+        sys.exit(app.exec())
+    except Exception as e:
+        print(f"Error fatal iniciando UI: {e}")
 
 if __name__ == '__main__':
     main()

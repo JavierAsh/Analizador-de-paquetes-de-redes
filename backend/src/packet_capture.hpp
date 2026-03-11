@@ -4,6 +4,9 @@
 #include <vector>
 #include <thread>
 #include <atomic>
+#include <mutex>
+#include <pcap.h>
+#include "protocol_headers.hpp"
 #include <pcap.h>
 
 class PacketCapture {
@@ -20,10 +23,16 @@ public:
     // Detiene la captura
     void stop_capture();
 
+    // Devuelve los paquetes recolectados desde la última llamada (vacía el buffer)
+    std::vector<PacketInfo> get_packet_batch();
+
 private:
     std::atomic<bool> is_running;
     std::thread capture_thread;
     pcap_t* pcap_handle;
+    
+    std::vector<PacketInfo> packet_buffer;
+    std::mutex buffer_mutex;
 
     void capture_loop();
 

@@ -113,22 +113,48 @@ void PacketCapture::process_packet(const struct pcap_pkthdr *pkthdr, const u_cha
         if (ip_header_len < 20) return; // Header IP inválido
 
         std::stringstream ss;
-        ss << "IP: " << (int)ip->saddr[0] << "." << (int)ip->saddr[1] << "." << (int)ip->saddr[2] << "." << (int)ip->saddr[3];
-        ss << " -> " << (int)ip->daddr[0] << "." << (int)ip->daddr[1] << "." << (int)ip->daddr[2] << "." << (int)ip->daddr[3];
+        ss << (int)ip->saddr[0] << "." << (int)ip->saddr[1] << "." << (int)ip->saddr[2] << "." << (int)ip->saddr[3];
+        std::string src_ip_str = ss.str();
+        
+        std::stringstream ss2;
+        ss2 << (int)ip->daddr[0] << "." << (int)ip->daddr[1] << "." << (int)ip->daddr[2] << "." << (int)ip->daddr[3];
+        std::string dst_ip_str = ss2.str();
 
         int transport_offset = ip_offset + ip_header_len;
 
-        if (ip->protocol == 6) { // TCP
-            if (pkthdr->len >= transport_offset + sizeof(tcp_header)) {
-                const tcp_header* tcp = reinterpret_cast<const tcp_header*>(packet + transport_offset);
-                std::cout << "[TCP] " << ss.str() << " Puertos: " << ntohs(tcp->source) << "->" << ntohs(tcp->dest) << std::endl;
-            }
+        PacketInfo info;
+        info.timestamp = "Now"; // Idealmente datetime, simplificado para fase 3
+        info.src_ip = src_ip_str;
+        info.dst_ip = dst_ip_str;
+        info.length = pkthdr->len;
+
+        bool has_transport = false;
+        
+        if (ip->protocol == 6 && pkthdr->len >= transport_offset + sizeof(tcp_header)) { // TCP
+            const tcp_header* tcp = reinterpret_cast<const tcp_header*>(packet + transport_offset);
+            info.protocol = "TCP";
+            info.src_port = ntohs(tcp->source);
+            info.dst_port = ntohs(tcp->dest);
+            has_transport = true;
         } 
-        else if (ip->protocol == 17) { // UDP
-            if (pkthdr->len >= transport_offset + sizeof(udp_header)) {
-                const udp_header* udp = reinterpret_cast<const udp_header*>(packet + transport_offset);
-                std::cout << "[UDP] " << ss.str() << " Puertos: " << ntohs(udp->source) << "->" << ntohs(udp->dest) << std::endl;
-            }
+        else if (ip->protocol == 17 && pkthdr->len >= transport_offset + sizeof(udp_header)) { // UDP
+            const udp_header* udp = reinterpret_cast<const udp_header*>(packet + transport_offset);
+            info.protocol = "UDP";
+            info.src_port = ntohs(udp->source);
+            info.dst_port = ntohs(udp->dest);
+            has_transport = true;
+        }
+
+        if (has_transport) {
+            std::lock_guard<std::mutex> lock(buffer_mutex);
+            packet_buffer.push_back(info);
         }
     }
+}
+
+std::vector<PacketInfo> PacketCapture::get_packet_batch() {
+    std::lock_guard<std::mutex> lock(buffer_mutex);
+    std::vector<PacketInfo> batch = std::move(packet_buffer);
+    packet_buffer.clear(); // Garantizar que se limpia (move a veces deja indefinido el size)
+    return batch;
 }

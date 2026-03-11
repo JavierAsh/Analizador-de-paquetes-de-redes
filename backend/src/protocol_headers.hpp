@@ -61,3 +61,14 @@ struct udp_header {
 };
 
 #pragma pack(pop)
+
+// Estructura de alto nivel para enviar a Python
+struct PacketInfo {
+    std::string timestamp; // Se podría usar uint64_t ms, pero string es facil para pruebas
+    std::string protocol;
+    std::string src_ip;
+    std::string dst_ip;
+    int src_port;
+    int dst_port;
+    int length;
+};
