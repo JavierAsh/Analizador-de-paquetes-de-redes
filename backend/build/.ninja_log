@@ -1,16 +1,10 @@
 # ninja log v7
-8	4728	7949083259455772	CMakeFiles/sniffer_core.dir/src/core.cpp.obj	50c2d9429cdd4353
-4728	5119	7949083306654210	sniffer_core.cp314-win_amd64.pyd	1433bb4116dfe696
-8	2210	7949094053689674	build.ninja	9eae1ee1de8f8d76
-8	2210	7949094053595774	C:/Analizador de paquetes de redes/backend/build/cmake_install.cmake	9eae1ee1de8f8d76
-8	2210	7949094053621109	C:/Analizador de paquetes de redes/backend/build/_deps/pybind11-build/cmake_install.cmake	9eae1ee1de8f8d76
-14	1717	7949083259512244	CMakeFiles/sniffer_core.dir/src/packet_capture.cpp.obj	92fd14a93c671066
-4	1562	7949094053689674	build.ninja	9eae1ee1de8f8d76
-4	1562	7949094053689674	C:/Analizador de paquetes de redes/backend/build/cmake_install.cmake	9eae1ee1de8f8d76
-4	1562	7949094053689674	C:/Analizador de paquetes de redes/backend/build/_deps/pybind11-build/cmake_install.cmake	9eae1ee1de8f8d76
-41	2016	7949094054696918	CMakeFiles/sniffer_core.dir/src/packet_capture.cpp.obj	92fd14a93c671066
-36	5173	7949094054644595	CMakeFiles/sniffer_core.dir/src/core.cpp.obj	50c2d9429cdd4353
-5174	5597	7949094106021612	sniffer_core.cp314-win_amd64.pyd	1433bb4116dfe696
-14	1911	7949098669991963	CMakeFiles/sniffer_core.dir/src/packet_capture.cpp.obj	92fd14a93c671066
 8	5019	7949098669920567	CMakeFiles/sniffer_core.dir/src/core.cpp.obj	50c2d9429cdd4353
 5019	5386	7949098720038089	sniffer_core.cp314-win_amd64.pyd	1433bb4116dfe696
+4	1562	7949105462072826	build.ninja	9eae1ee1de8f8d76
+4	1562	7949105462011764	C:/Analizador de paquetes de redes/backend/build/cmake_install.cmake	9eae1ee1de8f8d76
+4	1562	7949105462031985	C:/Analizador de paquetes de redes/backend/build/_deps/pybind11-build/cmake_install.cmake	9eae1ee1de8f8d76
+14	1911	7949098669991963	CMakeFiles/sniffer_core.dir/src/packet_capture.cpp.obj	92fd14a93c671066
+30	1657	7949105502525343	CMakeFiles/sniffer_core.dir/src/packet_capture.cpp.obj	92fd14a93c671066
+23	4720	7949105502464700	CMakeFiles/sniffer_core.dir/src/core.cpp.obj	50c2d9429cdd4353
+4720	5051	7949105549439007	sniffer_core.cp314-win_amd64.pyd	1433bb4116dfe696
