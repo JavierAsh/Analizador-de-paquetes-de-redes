@@ -1,0 +1,51 @@
+# ===========================
+# Archivos de compilación C++
+# ===========================
+backend/build/
+*.obj
+*.o
+*.pyd
+*.so
+*.dll
+*.exp
+*.lib
+
+# ===========================
+# Python
+# ===========================
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+*.spec
+
+# ===========================
+# PyInstaller
+# ===========================
+frontend/build/
+frontend/dist/
+frontend/*.spec
+
+# ===========================
+# IDE y editores
+# ===========================
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# ===========================
+# Archivos temporales del proyecto
+# ===========================
+tmp_*.py
+tmp_*.txt
+
+# ===========================
+# Sistema operativo
+# ===========================
+Thumbs.db
+Desktop.ini
+.DS_Store
