@@ -35,7 +35,8 @@ else()
 endif()
 
 # Create module
-pybind11_add_module(sniffer_core src/core.cpp)
+pybind11_add_module(sniffer_core src/core.cpp src/packet_capture.cpp)
 
 # Link wpcap and Packet (Librerias de Npcap)
-target_link_libraries(sniffer_core PRIVATE wpcap Packet)
+# Windows sockets implementation is needed (ws2_32)
+target_link_libraries(sniffer_core PRIVATE wpcap Packet ws2_32)

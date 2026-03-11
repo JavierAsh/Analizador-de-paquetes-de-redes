@@ -1,3 +1,9 @@
 # ninja log v7
 3	2872	7949070523110102	CMakeFiles/sniffer_core.dir/src/core.cpp.obj	50c2d9429cdd4353
 2881	3233	7949070551892335	sniffer_core.cp314-win_amd64.pyd	4afad623cf67c427
+8	2210	7949079224312145	build.ninja	9eae1ee1de8f8d76
+8	2210	7949079224312145	C:/Analizador de paquetes de redes/backend/build/cmake_install.cmake	9eae1ee1de8f8d76
+8	2210	7949079224312145	C:/Analizador de paquetes de redes/backend/build/_deps/pybind11-build/cmake_install.cmake	9eae1ee1de8f8d76
+48	5890	7949079225844238	CMakeFiles/sniffer_core.dir/src/packet_capture.cpp.obj	92fd14a93c671066
+43	8293	7949079225789020	CMakeFiles/sniffer_core.dir/src/core.cpp.obj	50c2d9429cdd4353
+8294	8949	7949079308304165	sniffer_core.cp314-win_amd64.pyd	1433bb4116dfe696

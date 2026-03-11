@@ -579,6 +579,8 @@ _Python3_INCLUDE_DIR:INTERNAL=C:/Users/capja/AppData/Local/Python/pythoncore-3.1
 //Python3 Properties
 _Python3_INTERPRETER_PROPERTIES:INTERNAL=Python;3;14;3;64;<none>;cp314-win_amd64;;C:\Users\capja\AppData\Local\Python\pythoncore-3.14-64\Lib;C:\Users\capja\AppData\Local\Python\pythoncore-3.14-64\Lib;C:\Users\capja\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages;C:\Users\capja\AppData\Local\Python\pythoncore-3.14-64\Lib\site-packages
 _Python3_INTERPRETER_SIGNATURE:INTERNAL=0abf84658bf67db165d984209d72130b
+//Interpreter reason failure
+_Python3_Interpreter_REASON_FAILURE:INTERNAL=
 //Path to a library.
 _Python3_LIBRARY_DEBUG:INTERNAL=_Python3_LIBRARY_DEBUG-NOTFOUND
 //Path to a library.

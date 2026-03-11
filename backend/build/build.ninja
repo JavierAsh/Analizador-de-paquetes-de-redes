@@ -53,6 +53,15 @@ build CMakeFiles/sniffer_core.dir/src/core.cpp.obj: CXX_COMPILER__sniffer_core_u
   OBJECT_FILE_DIR = CMakeFiles\sniffer_core.dir\src
   TARGET_SUPPORT_DIR = CMakeFiles\sniffer_core.dir
 
+build CMakeFiles/sniffer_core.dir/src/packet_capture.cpp.obj: CXX_COMPILER__sniffer_core_unscanned_ C$:/Analizador$ de$ paquetes$ de$ redes/backend/src/packet_capture.cpp || cmake_object_order_depends_target_sniffer_core
+  DEFINES = -DPy_NO_LINK_LIB -Dsniffer_core_EXPORTS
+  DEP_FILE = CMakeFiles\sniffer_core.dir\src\packet_capture.cpp.obj.d
+  FLAGS = -std=gnu++17 -fvisibility=hidden
+  INCLUDES = -IC:/Npcap-SDK/Include -isystem C:/Users/capja/AppData/Local/Python/pythoncore-3.14-64/Include -isystem "C:/Analizador de paquetes de redes/backend/build/_deps/pybind11-src/include"
+  OBJECT_DIR = CMakeFiles\sniffer_core.dir
+  OBJECT_FILE_DIR = CMakeFiles\sniffer_core.dir\src
+  TARGET_SUPPORT_DIR = CMakeFiles\sniffer_core.dir
+
 
 # =============================================================================
 # Link build statements for MODULE_LIBRARY target sniffer_core
@@ -61,9 +70,9 @@ build CMakeFiles/sniffer_core.dir/src/core.cpp.obj: CXX_COMPILER__sniffer_core_u
 #############################################
 # Link the shared module sniffer_core.cp314-win_amd64.pyd
 
-build sniffer_core.cp314-win_amd64.pyd: CXX_MODULE_LIBRARY_LINKER__sniffer_core_ CMakeFiles/sniffer_core.dir/src/core.cpp.obj | C$:/Users/capja/AppData/Local/Python/pythoncore-3.14-64/libs/python314.lib
+build sniffer_core.cp314-win_amd64.pyd: CXX_MODULE_LIBRARY_LINKER__sniffer_core_ CMakeFiles/sniffer_core.dir/src/core.cpp.obj CMakeFiles/sniffer_core.dir/src/packet_capture.cpp.obj | C$:/Users/capja/AppData/Local/Python/pythoncore-3.14-64/libs/python314.lib
   LINK_FLAGS = -shared
-  LINK_LIBRARIES = -lwpcap  -lPacket  C:/Users/capja/AppData/Local/Python/pythoncore-3.14-64/libs/python314.lib  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
+  LINK_LIBRARIES = -lwpcap  -lPacket  -lws2_32  C:/Users/capja/AppData/Local/Python/pythoncore-3.14-64/libs/python314.lib  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   LINK_PATH = -LC:/Npcap-SDK/Lib/x64
   OBJECT_DIR = CMakeFiles\sniffer_core.dir
   POST_BUILD = C:\WINDOWS\system32\cmd.exe /C "cd /D "C:\Analizador de paquetes de redes\backend\build" && C:\msys64\mingw64\bin\strip.exe "C:/Analizador de paquetes de redes/backend/build/sniffer_core.cp314-win_amd64.pyd""
